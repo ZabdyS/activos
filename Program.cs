@@ -12,7 +12,7 @@ var app = builder.Build();
 
 //conexion
 builder.Services.AddDbContext<MyDbContext>(options=>
-options.UseMySql("name=ConnectionStrings:Connection", new MySqlServerVersion(new Version(8, 0, 26))));
+options.UseMySql("name=ConnectionStrings:DefaultConnection", new MySqlServerVersion(new Version(8, 0, 26))));
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

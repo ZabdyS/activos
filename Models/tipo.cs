@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace activos.Models
 {
-    public class tipo
+    public class Tipo
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -11,6 +11,6 @@ namespace activos.Models
         [Required, StringLength(10)]
         public string tipo_persona { get; set; }
 
-        public ICollection<empleado> empleado { get; set; }
+        public ICollection<Empleado> empleado { get; set; }
     }
 }

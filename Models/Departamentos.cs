@@ -13,6 +13,6 @@ namespace activos.Models
 
         public bool Estado { get; set; }
 
-        public ICollection<empleado> empleado { get; set; }
+        public ICollection<Empleado> empleado { get; set; }
     }
 }

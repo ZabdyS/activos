@@ -7,16 +7,27 @@ namespace activos.Models
     {
         public DbSet<Departamentos> departamentos { get; set; }
 
-        public DbSet<tipo> tipo { get; set; }
+        public DbSet<Tipo> tipo { get; set; }
 
-        public DbSet<empleado> empleado { get; set; }
-
-        public MyDbContext(DbContextOptions<MyDbContext> options) : base(options) 
+        public DbSet<Empleado> empleado { get; set; }
+        public MyDbContext()
         {
-            departamentos = Set<Departamentos>();
-            tipo = Set<tipo>();
-            empleado = Set<empleado>();
 
         }
+
+       
+        public MyDbContext(DbContextOptions<MyDbContext> options) : base(options) 
+        {
+           
+
+        }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseMySql("Server=Localhost;Database=activos_fijos;User ID=root;Password=123456;", new MySqlServerVersion(new Version(8, 0, 28)));
+            }
+        }
+
     }
 }

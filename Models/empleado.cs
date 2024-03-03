@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace activos.Models
 {
-    public class empleado
+    public class Empleado
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -19,7 +19,7 @@ namespace activos.Models
         public Departamentos Departamento { get; set; }
 
         public int Id_Tipo { get; set; }
-        public tipo tipo { get; set; }
+        public Tipo tipo { get; set; }
 
         public DateTime Fecha_Ingreso { get; set; }
 
