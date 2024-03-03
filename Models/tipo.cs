@@ -11,6 +11,6 @@ namespace activos.Models
         [Required, StringLength(10)]
         public string tipo_persona { get; set; }
 
-        public ICollection<Empleado> empleado { get; set; }
+        //public ICollection<Empleado> empleado { get; set; }
     }
 }

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using activos.Models;
 
@@ -10,9 +11,11 @@ using activos.Models;
 namespace activos.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240303160617_Prueba")]
+    partial class Prueba
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,7 +52,7 @@ namespace activos.Migrations
                         .HasMaxLength(13)
                         .HasColumnType("varchar(13)");
 
-                    b.Property<int?>("DepartamentoId_departamento")
+                    b.Property<int>("DepartamentoId_departamento")
                         .HasColumnType("int");
 
                     b.Property<bool>("Estado")
@@ -69,7 +72,7 @@ namespace activos.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("varchar(50)");
 
-                    b.Property<int?>("tipoid_tipo")
+                    b.Property<int>("tipoid_tipo")
                         .HasColumnType("int");
 
                     b.HasKey("Id_empleado");
@@ -101,11 +104,15 @@ namespace activos.Migrations
                 {
                     b.HasOne("activos.Models.Departamentos", "Departamento")
                         .WithMany()
-                        .HasForeignKey("DepartamentoId_departamento");
+                        .HasForeignKey("DepartamentoId_departamento")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("activos.Models.Tipo", "tipo")
                         .WithMany()
-                        .HasForeignKey("tipoid_tipo");
+                        .HasForeignKey("tipoid_tipo")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Departamento");
 

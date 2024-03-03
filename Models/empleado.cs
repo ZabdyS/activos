@@ -16,10 +16,10 @@ namespace activos.Models
         public string Cedula { get; set; }
 
         public int Id_departamento { get; set; }
-        public Departamentos Departamento { get; set; }
+        public Departamentos? Departamento { get; set; }
 
         public int Id_Tipo { get; set; }
-        public Tipo tipo { get; set; }
+        public Tipo? tipo { get; set; }
 
         public DateTime Fecha_Ingreso { get; set; }
 
