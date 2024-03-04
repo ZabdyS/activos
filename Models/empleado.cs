@@ -1,5 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace activos.Models
 {
@@ -8,22 +9,28 @@ namespace activos.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id_empleado { get; set; }
-        [Required, StringLength(50)]
+
+        [Required]
+        [StringLength(100)]
         public string Nombre { get; set; }
 
-        [Required, StringLength(13)]
-
+        [Required]
+        [StringLength(20)]
         public string Cedula { get; set; }
 
+        // Propiedad de navegación para el departamento
+        [ForeignKey("Departamento")]
         public int Id_departamento { get; set; }
-        public Departamentos? Departamento { get; set; }
+        public Departamento? Departamento { get; set; }
 
-        public int Id_Tipo { get; set; }
-        public Tipo? tipo { get; set; }
+        // Propiedad de navegación para el tipo de persona
+        [ForeignKey("Tipo")]
+        public int Id_tipo { get; set; }
+        public Tipo? Tipo { get; set; }
 
-        public DateTime Fecha_Ingreso { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime FechaIngreso { get; set; }
 
         public bool Estado { get; set; }
-
     }
 }

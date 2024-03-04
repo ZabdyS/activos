@@ -9,16 +9,16 @@ using activos.Models;
 
 namespace activos.Controllers
 {
-    public class TiposController : Controller
+    public class TipoesController : Controller
     {
         private readonly MyDbContext _context;
 
-        public TiposController(MyDbContext context)
+        public TipoesController(MyDbContext context)
         {
             _context = context;
         }
 
-        // GET: Tipos
+        // GET: Tipoes
         public async Task<IActionResult> Index()
         {
               return _context.tipo != null ? 
@@ -26,7 +26,7 @@ namespace activos.Controllers
                           Problem("Entity set 'MyDbContext.tipo'  is null.");
         }
 
-        // GET: Tipos/Details/5
+        // GET: Tipoes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.tipo == null)
@@ -35,7 +35,7 @@ namespace activos.Controllers
             }
 
             var tipo = await _context.tipo
-                .FirstOrDefaultAsync(m => m.id_tipo == id);
+                .FirstOrDefaultAsync(m => m.Id_tipo == id);
             if (tipo == null)
             {
                 return NotFound();
@@ -44,18 +44,18 @@ namespace activos.Controllers
             return View(tipo);
         }
 
-        // GET: Tipos/Create
+        // GET: Tipoes/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Tipos/Create
+        // POST: Tipoes/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id_tipo,tipo_persona")] Tipo tipo)
+        public async Task<IActionResult> Create([Bind("Id_tipo,Tipo_persona")] Tipo tipo)
         {
             if (ModelState.IsValid)
             {
@@ -66,7 +66,7 @@ namespace activos.Controllers
             return View(tipo);
         }
 
-        // GET: Tipos/Edit/5
+        // GET: Tipoes/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.tipo == null)
@@ -82,14 +82,14 @@ namespace activos.Controllers
             return View(tipo);
         }
 
-        // POST: Tipos/Edit/5
+        // POST: Tipoes/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id_tipo,tipo_persona")] Tipo tipo)
+        public async Task<IActionResult> Edit(int id, [Bind("Id_tipo,Tipo_persona")] Tipo tipo)
         {
-            if (id != tipo.id_tipo)
+            if (id != tipo.Id_tipo)
             {
                 return NotFound();
             }
@@ -103,7 +103,7 @@ namespace activos.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TipoExists(tipo.id_tipo))
+                    if (!TipoExists(tipo.Id_tipo))
                     {
                         return NotFound();
                     }
@@ -117,7 +117,7 @@ namespace activos.Controllers
             return View(tipo);
         }
 
-        // GET: Tipos/Delete/5
+        // GET: Tipoes/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.tipo == null)
@@ -126,7 +126,7 @@ namespace activos.Controllers
             }
 
             var tipo = await _context.tipo
-                .FirstOrDefaultAsync(m => m.id_tipo == id);
+                .FirstOrDefaultAsync(m => m.Id_tipo == id);
             if (tipo == null)
             {
                 return NotFound();
@@ -135,7 +135,7 @@ namespace activos.Controllers
             return View(tipo);
         }
 
-        // POST: Tipos/Delete/5
+        // POST: Tipoes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -156,7 +156,7 @@ namespace activos.Controllers
 
         private bool TipoExists(int id)
         {
-          return (_context.tipo?.Any(e => e.id_tipo == id)).GetValueOrDefault();
+          return (_context.tipo?.Any(e => e.Id_tipo == id)).GetValueOrDefault();
         }
     }
 }

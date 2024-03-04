@@ -1,5 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace activos.Models
 {
@@ -7,10 +7,13 @@ namespace activos.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int id_tipo { get; set; }
-        [Required, StringLength(10)]
-        public string tipo_persona { get; set; }
+        public int Id_tipo { get; set; }
 
-        //public ICollection<Empleado> empleado { get; set; }
+        [Required]
+        [StringLength(10)]
+        public string? Tipo_persona { get; set; }
+
+        // Propiedad de navegación inversa para empleados
+       
     }
 }

@@ -5,7 +5,7 @@ namespace activos.Models
 {
     public class MyDbContext : DbContext
     {
-        public DbSet<Departamentos> departamentos { get; set; }
+        public DbSet<Departamento> departamentos { get; set; }
 
         public DbSet<Tipo> tipo { get; set; }
 

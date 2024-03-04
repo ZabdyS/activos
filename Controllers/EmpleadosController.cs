@@ -21,9 +21,8 @@ namespace activos.Controllers
         // GET: Empleados
         public async Task<IActionResult> Index()
         {
-              return _context.empleado != null ? 
-                          View(await _context.empleado.ToListAsync()) :
-                          Problem("Entity set 'MyDbContext.empleado'  is null.");
+            var myDbContext = _context.empleado.Include(e => e.Departamento).Include(e => e.Tipo);
+            return View(await myDbContext.ToListAsync());
         }
 
         // GET: Empleados/Details/5
@@ -35,6 +34,8 @@ namespace activos.Controllers
             }
 
             var empleado = await _context.empleado
+                .Include(e => e.Departamento)
+                .Include(e => e.Tipo)
                 .FirstOrDefaultAsync(m => m.Id_empleado == id);
             if (empleado == null)
             {
@@ -47,6 +48,8 @@ namespace activos.Controllers
         // GET: Empleados/Create
         public IActionResult Create()
         {
+            ViewData["Id_departamento"] = new SelectList(_context.departamentos, "Id_departamento", "Descripcion");
+            ViewData["Id_tipo"] = new SelectList(_context.tipo, "Id_tipo", "Tipo_persona");
             return View();
         }
 
@@ -55,7 +58,7 @@ namespace activos.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id_empleado,Nombre,Cedula,Id_departamento,Id_Tipo,Fecha_Ingreso,Estado")] Empleado empleado)
+        public async Task<IActionResult> Create([Bind("Id_empleado,Nombre,Cedula,Id_departamento,Id_tipo,FechaIngreso,Estado")] Empleado empleado)
         {
             if (ModelState.IsValid)
             {
@@ -63,6 +66,8 @@ namespace activos.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["Id_departamento"] = new SelectList(_context.departamentos, "Id_departamento", "Descripcion", empleado.Id_departamento);
+            ViewData["Id_tipo"] = new SelectList(_context.tipo, "Id_tipo", "Tipo_persona", empleado.Id_tipo);
             return View(empleado);
         }
 
@@ -79,6 +84,8 @@ namespace activos.Controllers
             {
                 return NotFound();
             }
+            ViewData["Id_departamento"] = new SelectList(_context.departamentos, "Id_departamento", "Descripcion", empleado.Id_departamento);
+            ViewData["Id_tipo"] = new SelectList(_context.tipo, "Id_tipo", "Tipo_persona", empleado.Id_tipo);
             return View(empleado);
         }
 
@@ -87,7 +94,7 @@ namespace activos.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id_empleado,Nombre,Cedula,Id_departamento,Id_Tipo,Fecha_Ingreso,Estado")] Empleado empleado)
+        public async Task<IActionResult> Edit(int id, [Bind("Id_empleado,Nombre,Cedula,Id_departamento,Id_tipo,FechaIngreso,Estado")] Empleado empleado)
         {
             if (id != empleado.Id_empleado)
             {
@@ -114,6 +121,8 @@ namespace activos.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["Id_departamento"] = new SelectList(_context.departamentos, "Id_departamento", "Descripcion", empleado.Id_departamento);
+            ViewData["Id_tipo"] = new SelectList(_context.tipo, "Id_tipo", "Tipo_persona", empleado.Id_tipo);
             return View(empleado);
         }
 
@@ -126,6 +135,8 @@ namespace activos.Controllers
             }
 
             var empleado = await _context.empleado
+                .Include(e => e.Departamento)
+                .Include(e => e.Tipo)
                 .FirstOrDefaultAsync(m => m.Id_empleado == id);
             if (empleado == null)
             {

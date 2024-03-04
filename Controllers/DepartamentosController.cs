@@ -34,14 +34,14 @@ namespace activos.Controllers
                 return NotFound();
             }
 
-            var departamentos = await _context.departamentos
+            var departamento = await _context.departamentos
                 .FirstOrDefaultAsync(m => m.Id_departamento == id);
-            if (departamentos == null)
+            if (departamento == null)
             {
                 return NotFound();
             }
 
-            return View(departamentos);
+            return View(departamento);
         }
 
         // GET: Departamentos/Create
@@ -55,15 +55,15 @@ namespace activos.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id_departamento,Departamento,Estado")] Departamentos departamentos)
+        public async Task<IActionResult> Create([Bind("Id_departamento,Descripcion,Estado")] Departamento departamento)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(departamentos);
+                _context.Add(departamento);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(departamentos);
+            return View(departamento);
         }
 
         // GET: Departamentos/Edit/5
@@ -74,12 +74,12 @@ namespace activos.Controllers
                 return NotFound();
             }
 
-            var departamentos = await _context.departamentos.FindAsync(id);
-            if (departamentos == null)
+            var departamento = await _context.departamentos.FindAsync(id);
+            if (departamento == null)
             {
                 return NotFound();
             }
-            return View(departamentos);
+            return View(departamento);
         }
 
         // POST: Departamentos/Edit/5
@@ -87,9 +87,9 @@ namespace activos.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id_departamento,Departamento,Estado")] Departamentos departamentos)
+        public async Task<IActionResult> Edit(int id, [Bind("Id_departamento,Descripcion,Estado")] Departamento departamento)
         {
-            if (id != departamentos.Id_departamento)
+            if (id != departamento.Id_departamento)
             {
                 return NotFound();
             }
@@ -98,12 +98,12 @@ namespace activos.Controllers
             {
                 try
                 {
-                    _context.Update(departamentos);
+                    _context.Update(departamento);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!DepartamentosExists(departamentos.Id_departamento))
+                    if (!DepartamentoExists(departamento.Id_departamento))
                     {
                         return NotFound();
                     }
@@ -114,7 +114,7 @@ namespace activos.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(departamentos);
+            return View(departamento);
         }
 
         // GET: Departamentos/Delete/5
@@ -125,14 +125,14 @@ namespace activos.Controllers
                 return NotFound();
             }
 
-            var departamentos = await _context.departamentos
+            var departamento = await _context.departamentos
                 .FirstOrDefaultAsync(m => m.Id_departamento == id);
-            if (departamentos == null)
+            if (departamento == null)
             {
                 return NotFound();
             }
 
-            return View(departamentos);
+            return View(departamento);
         }
 
         // POST: Departamentos/Delete/5
@@ -144,17 +144,17 @@ namespace activos.Controllers
             {
                 return Problem("Entity set 'MyDbContext.departamentos'  is null.");
             }
-            var departamentos = await _context.departamentos.FindAsync(id);
-            if (departamentos != null)
+            var departamento = await _context.departamentos.FindAsync(id);
+            if (departamento != null)
             {
-                _context.departamentos.Remove(departamentos);
+                _context.departamentos.Remove(departamento);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool DepartamentosExists(int id)
+        private bool DepartamentoExists(int id)
         {
           return (_context.departamentos?.Any(e => e.Id_departamento == id)).GetValueOrDefault();
         }

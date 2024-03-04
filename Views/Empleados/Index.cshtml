@@ -19,13 +19,13 @@
                 @Html.DisplayNameFor(model => model.Cedula)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Id_departamento)
+                @Html.DisplayNameFor(model => model.Departamento)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Id_Tipo)
+                @Html.DisplayNameFor(model => model.Tipo)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Fecha_Ingreso)
+                @Html.DisplayNameFor(model => model.FechaIngreso)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Estado)
@@ -43,13 +43,13 @@
                 @Html.DisplayFor(modelItem => item.Cedula)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Id_departamento)
+                @Html.DisplayFor(modelItem => item.Departamento.Descripcion)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Id_Tipo)
+                @Html.DisplayFor(modelItem => item.Tipo.Tipo_persona)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Fecha_Ingreso)
+                @Html.DisplayFor(modelItem => item.FechaIngreso)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Estado)

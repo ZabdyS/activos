@@ -3,16 +3,17 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace activos.Models
 {
-    public class Departamentos
+    public class Departamento
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id_departamento { get; set; }
-        [Required, StringLength(50)]
-        public string Departamento { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string? Descripcion { get; set; }
 
         public bool Estado { get; set; }
-
-        //public ICollection<Empleado> empleado { get; set; }
     }
 }
+

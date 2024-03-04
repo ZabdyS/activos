@@ -25,18 +25,18 @@
             </div>
             <div class="form-group">
                 <label asp-for="Id_departamento" class="control-label"></label>
-                <input asp-for="Id_departamento" class="form-control" />
+                <select asp-for="Id_departamento" class="form-control" asp-items="ViewBag.Id_departamento"></select>
                 <span asp-validation-for="Id_departamento" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Id_Tipo" class="control-label"></label>
-                <input asp-for="Id_Tipo" class="form-control" />
-                <span asp-validation-for="Id_Tipo" class="text-danger"></span>
+                <label asp-for="Id_tipo" class="control-label"></label>
+                <select asp-for="Id_tipo" class="form-control" asp-items="ViewBag.Id_tipo"></select>
+                <span asp-validation-for="Id_tipo" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Fecha_Ingreso" class="control-label"></label>
-                <input asp-for="Fecha_Ingreso" class="form-control" />
-                <span asp-validation-for="Fecha_Ingreso" class="text-danger"></span>
+                <label asp-for="FechaIngreso" class="control-label"></label>
+                <input asp-for="FechaIngreso" class="form-control" />
+                <span asp-validation-for="FechaIngreso" class="text-danger"></span>
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
