@@ -7,12 +7,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+//conexion
+builder.Services.AddDbContext<MyDbContext>(options =>
+options.UseMySql("name=ConnectionStrings:DefaultConnection", new MySqlServerVersion(new Version(8, 0, 26))));
 
 var app = builder.Build();
 
-//conexion
-builder.Services.AddDbContext<MyDbContext>(options=>
-options.UseMySql("name=ConnectionStrings:DefaultConnection", new MySqlServerVersion(new Version(8, 0, 26))));
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
