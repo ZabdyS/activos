@@ -10,9 +10,9 @@ namespace activos.Models
         public DbSet<Tipo> tipo { get; set; }
 
         public DbSet<Empleado> empleado { get; set; }
-        
 
-       
+        public DbSet<ActivoFijo> ActivosFijos { get; set; }
+        public DbSet<TipoActivo> TipoActivos { get; set; }
         public MyDbContext(DbContextOptions<MyDbContext> options) : base(options) 
         {
            
