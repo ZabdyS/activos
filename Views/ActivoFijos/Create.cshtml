@@ -4,9 +4,9 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Crear Activo Fijo</h1>
 
-<h4>ActivoFijo</h4>
+<h4>Activo Fijo</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -14,7 +14,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Descripcion" class="control-label"></label>
-                <input asp-for="Descripcion" class="form-control" />
+                <input asp-for="Descripcion" class="form-control" placeholder="Nombre del Activo Fijo" />
                 <span asp-validation-for="Descripcion" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -32,12 +32,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="ValorCompra" class="control-label"></label>
-                <input asp-for="ValorCompra" class="form-control" />
+                <input asp-for="ValorCompra" class="form-control" placeholder="Inserta el Valor de Compra" />
                 <span asp-validation-for="ValorCompra" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="DepreciacionAcumulada" class="control-label"></label>
-                <input asp-for="DepreciacionAcumulada" class="form-control" />
+                <input asp-for="DepreciacionAcumulada" class="form-control" placeholder="Inserta la Depreciacion" />
                 <span asp-validation-for="DepreciacionAcumulada" class="text-danger"></span>
             </div>
             <div class="form-group form-check">
@@ -53,7 +53,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn btn-secondary">Volver</a>
 </div>
 
 @section Scripts {

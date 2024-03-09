@@ -4,7 +4,7 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Crear Empleado</h1>
 
 <h4>Empleado</h4>
 <hr />
@@ -14,30 +14,30 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Nombre" class="control-label"></label>
-                <input asp-for="Nombre" class="form-control" />
+                <input asp-for="Nombre" class="form-control" placeholder="Inserta el nombre del empleado" />
                 <span asp-validation-for="Nombre" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Cedula" class="control-label"></label>
-                <input asp-for="Cedula" class="form-control" />
+                <input asp-for="Cedula" class="form-control" placeholder="Inserta la cedula del empleado" />
                 <span asp-validation-for="Cedula" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Id_departamento" class="control-label"></label>
-                <select asp-for="Id_departamento" class ="form-control" asp-items="ViewBag.Id_departamento"></select>
+                <select asp-for="Id_departamento" class ="form-control" asp-items="ViewBag.Id_departamento" placeholder="Selecciona el departamento a que pertenece"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Id_tipo" class="control-label"></label>
-                <select asp-for="Id_tipo" class ="form-control" asp-items="ViewBag.Id_tipo"></select>
+                <select asp-for="Id_tipo" class ="form-control" asp-items="ViewBag.Id_tipo" placeholder="Selecciona el tipo de empleado"></select>
             </div>
             <div class="form-group">
                 <label asp-for="FechaIngreso" class="control-label"></label>
-                <input asp-for="FechaIngreso" class="form-control" />
+                <input asp-for="FechaIngreso" class="form-control" placeholder="Selecciona la fecha de ingreso" />
                 <span asp-validation-for="FechaIngreso" class="text-danger"></span>
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Estado" /> @Html.DisplayNameFor(model => model.Estado)
+                    <input class="form-check-input" asp-for="Estado" placeholder="Selecciona su estado" /> @Html.DisplayNameFor(model => model.Estado)
                 </label>
             </div>
             <div class="form-group">
@@ -48,7 +48,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn btn-secondary">Volver</a>
 </div>
 
 @section Scripts {

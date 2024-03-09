@@ -7,9 +7,9 @@
 <h1>Gestor de Departamentos</h1>
 
 <p>
-    <a asp-action="Create">Crear un nuevo Departamento</a>
+    <a asp-action="Create" class="btn btn-outline-success">Crear un nuevo Departamento</a>
 </p>
-<table class="table">
+<table class="table table-striped">
     <thead>
         <tr>
             <th>
@@ -31,9 +31,9 @@
                 @Html.DisplayFor(modelItem => item.Estado)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id_departamento">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id_departamento">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id_departamento">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id_departamento" class="btn btn-warning">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.Id_departamento" class="btn btn-info">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id_departamento" class="btn btn-danger">Eliminar</a>
             </td>
         </tr>
 }
