@@ -49,7 +49,7 @@ namespace activos.Controllers
         public IActionResult Create()
         {
             ViewData["Id_departamento"] = new SelectList(_context.departamentos, "Id_departamento", "Descripcion");
-            ViewData["Id_tipo_activo"] = new SelectList(_context.TipoActivos, "Id_tipo_activo", "CuentaContableCompra");
+            ViewData["Id_tipo_activo"] = new SelectList(_context.TipoActivos, "Id_tipo_activo", "Descripcion");
             return View();
         }
 
@@ -67,7 +67,7 @@ namespace activos.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["Id_departamento"] = new SelectList(_context.departamentos, "Id_departamento", "Descripcion", activoFijo.Id_departamento);
-            ViewData["Id_tipo_activo"] = new SelectList(_context.TipoActivos, "Id_tipo_activo", "CuentaContableCompra", activoFijo.Id_tipo_activo);
+            ViewData["Id_tipo_activo"] = new SelectList(_context.TipoActivos, "Id_tipo_activo", "Descripcion", activoFijo.Id_tipo_activo);
             return View(activoFijo);
         }
 
@@ -85,7 +85,7 @@ namespace activos.Controllers
                 return NotFound();
             }
             ViewData["Id_departamento"] = new SelectList(_context.departamentos, "Id_departamento", "Descripcion", activoFijo.Id_departamento);
-            ViewData["Id_tipo_activo"] = new SelectList(_context.TipoActivos, "Id_tipo_activo", "CuentaContableCompra", activoFijo.Id_tipo_activo);
+            ViewData["Id_tipo_activo"] = new SelectList(_context.TipoActivos, "Id_tipo_activo", "Descripcion", activoFijo.Id_tipo_activo);
             return View(activoFijo);
         }
 
@@ -122,7 +122,7 @@ namespace activos.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["Id_departamento"] = new SelectList(_context.departamentos, "Id_departamento", "Descripcion", activoFijo.Id_departamento);
-            ViewData["Id_tipo_activo"] = new SelectList(_context.TipoActivos, "Id_tipo_activo", "CuentaContableCompra", activoFijo.Id_tipo_activo);
+            ViewData["Id_tipo_activo"] = new SelectList(_context.TipoActivos, "Id_tipo_activo", "Descripcion", activoFijo.Id_tipo_activo);
             return View(activoFijo);
         }
 
