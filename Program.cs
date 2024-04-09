@@ -1,5 +1,8 @@
 using activos.Models;
 using Microsoft.EntityFrameworkCore;
+using activos.Service;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc;
 
 
 
@@ -10,6 +13,14 @@ builder.Services.AddControllersWithViews();
 //conexion
 builder.Services.AddDbContext<MyDbContext>(options =>
 options.UseMySql("name=ConnectionStrings:DefaultConnection", new MySqlServerVersion(new Version(8, 0, 26))));
+
+builder.Services.AddScoped<IUsuarioService, UsuarioService>();
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
+{
+    options.LoginPath = "/Inicio/IniciarSesion";
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+});
 
 var app = builder.Build();
 
@@ -27,11 +38,12 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseAuthorization();
 
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Inicio}/{action=IniciarSesion}/{id?}");
 
 app.Run();
