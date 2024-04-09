@@ -13,6 +13,8 @@ namespace activos.Models
 
         public DbSet<ActivoFijo> ActivosFijos { get; set; }
         public DbSet<TipoActivo> TipoActivos { get; set; }
+
+        public DbSet<Usuario> Usuarios { get; set; }
         public MyDbContext(DbContextOptions<MyDbContext> options) : base(options) 
         {
            
