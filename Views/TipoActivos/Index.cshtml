@@ -1,0 +1,53 @@
+﻿@model IEnumerable<activos.Models.TipoActivo>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Gestor de Tipos de Activos</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-outline-success">Crear un nuevo tipo de activo</a>
+</p>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CuentaContableCompra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CuentaContableDepreciacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th >Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CuentaContableCompra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CuentaContableDepreciacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+                <td class="d-flex justify-content-end">
+                    <a asp-action="Edit" asp-route-id="@item.Id_tipo_activo" class="btn btn-warning">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.Id_tipo_activo" class="btn btn-info">Detalles</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id_tipo_activo" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,8 +1,77 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<head>
+        <script src="/docs/5.3/assets/js/color-modes.js"></script>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="~/Content/Style.css" />
+</head>
+<body>
+
+    <main>
+        <div class="b-example-divider"></div>
+
+        <div class="container my-5">
+            <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+                <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
+                    <h1 class="display-4 fw-bold lh-1 text-body-emphasis">GRUPO MZA</h1>
+                    <h1 class="display-4 fw-bold lh-1 text-body-emphasis">GESTION DE ACTIVOS FIJOS</h1>
+                    <p class="lead">Bienvenido al Sistema de Gestion</p>
+
+                </div>
+                   
+            </div>
+        </div>
+
+        <div class="px-4 py-5 my-5 text-center">
+            <h1 class="display-5 fw-bold text-body-emphasis">Panel de Activos Fijos</h1>
+            <div class="row">
+                <div class="col-lg-6 mx-auto">
+                    <p class="lead mb-4">Comienza a gestionar tus activos</p>
+                    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                        <button onclick="window.location.href = '@Url.Action("Index", "Departamentos")'" type="button" class="btn btn-primary btn-lg px-4">Comenzar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Page Content-->
+    <section class="pt-4">
+        <div class="container px-lg-5">
+            <!-- Page Features-->
+            <div class="row gx-lg-5">
+                <div class="col-lg-6 col-xxl-4 mb-5">
+                    <div class="card bg-light border-0 h-100">
+                        <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="bi bi-collection"></i></div>
+                            <h2 class="fs-4 fw-bold">Departamentos</h2>
+                            <p class="mb-0">Gestionar los Departamentos</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xxl-4 mb-5">
+                    <div class="card bg-light border-0 h-100">
+                        <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="bi bi-cloud-download"></i></div>
+                            <h2 class="fs-4 fw-bold">Empleados</h2>
+                            <p class="mb-0">Gestionar los Empleados</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-xxl-4 mb-5">
+                    <div class="card bg-light border-0 h-100">
+                        <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i class="bi bi-card-heading"></i></div>
+                            <h2 class="fs-4 fw-bold">Grupo MZA</h2>
+                            <p class="mb-0">Integrado por Mei Yu, Zabdy Sanchez y Alejandro Rosario</p>
+                        </div>
+                    </div>
+                </div>
+           
+            </div>
+        </div>
+    </section>
+    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
