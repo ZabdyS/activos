@@ -30,6 +30,8 @@ namespace activos.Models
         public int Id_tipo { get; set; }
         public Tipo? Tipo { get; set; }
 
+
+        [Required]
         [DataType(DataType.Date)]
         public DateTime FechaIngreso { get; set; }
 
