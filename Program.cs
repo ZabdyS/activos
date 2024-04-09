@@ -1,3 +1,4 @@
+using activos.Controllers;
 using activos.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,6 +8,15 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+// Configurar la inyección de dependencias para tu servicio ContabilidadService
+builder.Services.AddSingleton<ContabilidadService>();
+
+// Agregar la configuración para la inyección de dependencias de HttpClient
+builder.Services.AddHttpClient<AsientosContablesController>(client =>
+{
+    client.BaseAddress = new Uri("https://ap1-contabilidad.azurewebsites.net/");
+    // Agregar configuraciones adicionales según sea necesario
+});
 //conexion
 builder.Services.AddDbContext<MyDbContext>(options =>
 options.UseMySql("name=ConnectionStrings:DefaultConnection", new MySqlServerVersion(new Version(8, 0, 26))));
