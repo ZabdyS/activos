@@ -57,6 +57,47 @@ namespace activos.Migrations
                     b.ToTable("ActivosFijos");
                 });
 
+            modelBuilder.Entity("activos.Models.CalculoDepreciacion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("ActivoFijoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("AnioProceso")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CuentaCompra")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<string>("CuentaDepreciacion")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<decimal>("DepreciacionAcumulada")
+                        .HasColumnType("decimal(18, 2)");
+
+                    b.Property<DateTime>("FechaProceso")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("MesProceso")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("MontoDepreciado")
+                        .HasColumnType("decimal(18, 2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ActivoFijoId");
+
+                    b.ToTable("CalculosDepreciacion");
+                });
+
             modelBuilder.Entity("activos.Models.Departamento", b =>
                 {
                     b.Property<int>("Id_departamento")
@@ -196,6 +237,17 @@ namespace activos.Migrations
                     b.Navigation("Departamento");
 
                     b.Navigation("TipoActivo");
+                });
+
+            modelBuilder.Entity("activos.Models.CalculoDepreciacion", b =>
+                {
+                    b.HasOne("activos.Models.ActivoFijo", "ActivoFijo")
+                        .WithMany()
+                        .HasForeignKey("ActivoFijoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ActivoFijo");
                 });
 
             modelBuilder.Entity("activos.Models.Empleado", b =>

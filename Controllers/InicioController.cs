@@ -25,7 +25,7 @@ _usuarioService = usuarioService;
         [HttpPost]
         public async Task<IActionResult> Registrarse(Usuario modelo)
         {
-            modelo.Clave = Utilidades.EncriptarClave(modelo.Clave);
+            modelo.Clave = Service.Utilidades.EncriptarClave(modelo.Clave);
             Usuario usuario_creado = await _usuarioService.SaveUsuario(modelo);
             if(usuario_creado.id>0)
                 return RedirectToAction("IniciarSesion","Inicio");
@@ -40,7 +40,7 @@ _usuarioService = usuarioService;
         [HttpPost]
         public async Task<IActionResult> IniciarSesion( string correo, string clave)
         {
-            Usuario usuario_encontrado = await _usuarioService.GetUsuario(correo ,Utilidades.EncriptarClave(clave));
+            Usuario usuario_encontrado = await _usuarioService.GetUsuario(correo , Service.Utilidades.EncriptarClave(clave));
 
             if(usuario_encontrado== null)
             {

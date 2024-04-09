@@ -11,8 +11,8 @@ using activos.Models;
 namespace activos.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20240308233057_prueba")]
-    partial class prueba
+    [Migration("20240409222828_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -58,6 +58,47 @@ namespace activos.Migrations
                     b.HasIndex("Id_tipo_activo");
 
                     b.ToTable("ActivosFijos");
+                });
+
+            modelBuilder.Entity("activos.Models.CalculoDepreciacion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("ActivoFijoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("AnioProceso")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CuentaCompra")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<string>("CuentaDepreciacion")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<decimal>("DepreciacionAcumulada")
+                        .HasColumnType("decimal(18, 2)");
+
+                    b.Property<DateTime>("FechaProceso")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("MesProceso")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("MontoDepreciado")
+                        .HasColumnType("decimal(18, 2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ActivoFijoId");
+
+                    b.ToTable("CalculosDepreciacion");
                 });
 
             modelBuilder.Entity("activos.Models.Departamento", b =>
@@ -161,6 +202,27 @@ namespace activos.Migrations
                     b.ToTable("TipoActivos");
                 });
 
+            modelBuilder.Entity("activos.Models.Usuario", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Clave")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
+
+                    b.Property<string>("Correo")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Usuarios");
+                });
+
             modelBuilder.Entity("activos.Models.ActivoFijo", b =>
                 {
                     b.HasOne("activos.Models.Departamento", "Departamento")
@@ -178,6 +240,17 @@ namespace activos.Migrations
                     b.Navigation("Departamento");
 
                     b.Navigation("TipoActivo");
+                });
+
+            modelBuilder.Entity("activos.Models.CalculoDepreciacion", b =>
+                {
+                    b.HasOne("activos.Models.ActivoFijo", "ActivoFijo")
+                        .WithMany()
+                        .HasForeignKey("ActivoFijoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ActivoFijo");
                 });
 
             modelBuilder.Entity("activos.Models.Empleado", b =>
