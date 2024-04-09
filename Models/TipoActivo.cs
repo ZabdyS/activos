@@ -13,11 +13,11 @@ namespace activos.Models
         [StringLength(100)]
         public string? Descripcion { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "El campo Cuenta Contable Compra es requerido")]
         [StringLength(50)]
         public string? CuentaContableCompra { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "El campo Cuenta Contable Depreciacion es requerido")]
         [StringLength(50)]
         public string? CuentaContableDepreciacion { get; set; }
 
