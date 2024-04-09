@@ -19,11 +19,16 @@ namespace activos.Controllers
         }
 
         // GET: Departamentos
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index( string buscar_departamento)
         {
-              return _context.departamentos != null ? 
-                          View(await _context.departamentos.ToListAsync()) :
-                          Problem("Entity set 'MyDbContext.departamentos'  is null.");
+            var departamentos = from Departamentos in _context.departamentos select Departamentos;
+            if (!String.IsNullOrEmpty(buscar_departamento))
+            {
+                departamentos= departamentos.Where(s=>s.Descripcion!.Contains(buscar_departamento));
+            }
+
+            return View(await departamentos.ToListAsync());
+                          
         }
 
         // GET: Departamentos/Details/5

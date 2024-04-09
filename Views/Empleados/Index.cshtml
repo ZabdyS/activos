@@ -19,6 +19,13 @@
         <a asp-action="Create" class="btn btn-outline-success">Crear un nuevo Empleado</a>
 </p>
 
+    <form asp-controller="Empleados" asp-action="Index">
+        <p>
+            Buscar: <input type="text" name="buscar_empleado" class="form-text" />
+            <input type="submit" value="Buscar" class="btn-sm btn-dark" />
+        </p>
+    </form>
+
     <table class="table table-striped table-bordered">
     <thead>
         <tr>

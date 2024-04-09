@@ -19,10 +19,15 @@ namespace activos.Controllers
         }
 
         // GET: ActivoFijos
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index( string buscar_Activo)
         {
-            var myDbContext = _context.ActivosFijos.Include(a => a.Departamento).Include(a => a.TipoActivo);
-            return View(await myDbContext.ToListAsync());
+            var Activos = from ActivoFijo in _context.ActivosFijos select ActivoFijo;
+            if (!String.IsNullOrEmpty(buscar_Activo))
+            {
+                Activos = Activos.Where(s => s.Descripcion.Contains(buscar_Activo));
+            }
+
+            return View(await Activos.ToListAsync());
         }
 
         // GET: ActivoFijos/Details/5

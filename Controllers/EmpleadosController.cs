@@ -19,10 +19,15 @@ namespace activos.Controllers
         }
 
         // GET: Empleados
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index( string buscar_empleado)
         {
-            var myDbContext = _context.empleado.Include(e => e.Departamento).Include(e => e.Tipo);
-            return View(await myDbContext.ToListAsync());
+            var empleado = from Empleado in _context.empleado select Empleado;
+            if (!String.IsNullOrEmpty(buscar_empleado))
+            {
+                empleado = empleado.Where(s => s.Nombre.Contains(buscar_empleado));
+            }
+
+            return View(await empleado.ToListAsync());
         }
 
         // GET: Empleados/Details/5

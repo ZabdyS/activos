@@ -19,11 +19,15 @@ namespace activos.Controllers
         }
 
         // GET: TipoActivos
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index( string buscar_tipo)
         {
-              return _context.TipoActivos != null ? 
-                          View(await _context.TipoActivos.ToListAsync()) :
-                          Problem("Entity set 'MyDbContext.TipoActivos'  is null.");
+            var tipoActivos = from  TipoActivo in _context.TipoActivos select TipoActivo;
+            if (!String.IsNullOrEmpty(buscar_tipo))
+            {
+                tipoActivos = tipoActivos.Where(s => s.Descripcion.Contains(buscar_tipo));
+            }
+
+            return View(await tipoActivos.ToListAsync());
         }
 
         // GET: TipoActivos/Details/5
