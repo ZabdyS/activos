@@ -1,0 +1,66 @@
+﻿@model activos.Models.CalculoDepreciacion
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Editar Cálculo de Depreciación</h1>
+
+<form asp-action="Edit">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label asp-for="AnioProceso" class="control-label"></label>
+        <input asp-for="AnioProceso" class="form-control" />
+        <span asp-validation-for="AnioProceso" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="MesProceso" class="control-label"></label>
+        <input asp-for="MesProceso" class="form-control" />
+        <span asp-validation-for="MesProceso" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ActivoFijoId" class="control-label"></label>
+        <input asp-for="ActivoFijoId" class="form-control" />
+        <span asp-validation-for="ActivoFijoId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="FechaProceso" class="control-label"></label>
+        <input asp-for="FechaProceso" class="form-control" />
+        <span asp-validation-for="FechaProceso" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="MontoDepreciado" class="control-label"></label>
+        <input asp-for="MontoDepreciado" class="form-control" />
+        <span asp-validation-for="MontoDepreciado" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DepreciacionAcumulada" class="control-label"></label>
+        <input asp-for="DepreciacionAcumulada" class="form-control" />
+        <span asp-validation-for="DepreciacionAcumulada" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CuentaCompra" class="control-label"></label>
+        <input asp-for="CuentaCompra" class="form-control" />
+        <span asp-validation-for="CuentaCompra" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CuentaDepreciacion" class="control-label"></label>
+        <input asp-for="CuentaDepreciacion" class="form-control" />
+        <span asp-validation-for="CuentaDepreciacion" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Guardar" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+    </div>
+</form>
+

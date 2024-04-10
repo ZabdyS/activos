@@ -11,15 +11,15 @@ using activos.Models;
 namespace activos.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20240308233057_prueba")]
-    partial class prueba
+    [Migration("20240409233243_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.16")
+                .HasAnnotation("ProductVersion", "7.0.2")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("activos.Models.ActivoFijo", b =>
@@ -58,6 +58,47 @@ namespace activos.Migrations
                     b.HasIndex("Id_tipo_activo");
 
                     b.ToTable("ActivosFijos");
+                });
+
+            modelBuilder.Entity("activos.Models.CalculoDepreciacion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("ActivoFijoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("AnioProceso")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CuentaCompra")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<string>("CuentaDepreciacion")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<decimal>("DepreciacionAcumulada")
+                        .HasColumnType("decimal(18, 2)");
+
+                    b.Property<DateTime>("FechaProceso")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("MesProceso")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("MontoDepreciado")
+                        .HasColumnType("decimal(18, 2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ActivoFijoId");
+
+                    b.ToTable("CalculoDepreciaciones");
                 });
 
             modelBuilder.Entity("activos.Models.Departamento", b =>
@@ -178,6 +219,17 @@ namespace activos.Migrations
                     b.Navigation("Departamento");
 
                     b.Navigation("TipoActivo");
+                });
+
+            modelBuilder.Entity("activos.Models.CalculoDepreciacion", b =>
+                {
+                    b.HasOne("activos.Models.ActivoFijo", "ActivoFijo")
+                        .WithMany()
+                        .HasForeignKey("ActivoFijoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ActivoFijo");
                 });
 
             modelBuilder.Entity("activos.Models.Empleado", b =>

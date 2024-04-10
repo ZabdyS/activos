@@ -1,0 +1,71 @@
+﻿@model activos.Models.CalculoDepreciacion
+
+@{
+    ViewData["Title"] = "Eliminar Cálculo de Depreciación";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h3>¿Está seguro de que desea eliminar este registro?</h3>
+<div>
+    <h4>Detalle del Cálculo de Depreciación</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Año Proceso:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AnioProceso)
+        </dd>
+        <dt class="col-sm-2">
+            Mes Proceso:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MesProceso)
+        </dd>
+        <dt class="col-sm-2">
+            Activo Fijo:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ActivoFijo.Descripcion)
+        </dd>
+        <dt class="col-sm-2">
+            Fecha de Proceso:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FechaProceso)
+        </dd>
+        <dt class="col-sm-2">
+            Monto Depreciado:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MontoDepreciado)
+        </dd>
+        <dt class="col-sm-2">
+            Depreciación Acumulada:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DepreciacionAcumulada)
+        </dd>
+        <dt class="col-sm-2">
+            Cuenta Compra:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CuentaCompra)
+        </dd>
+        <dt class="col-sm-2">
+            Cuenta Depreciación:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CuentaDepreciacion)
+        </dd>
+    </dl>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <div class="form-group">
+            <input type="submit" value="Eliminar" class="btn btn-danger" />
+            <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </form>
+</div>
+
