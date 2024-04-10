@@ -1,0 +1,84 @@
+﻿@model IEnumerable<activos.Models.CalculoDepreciacion>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Gestor de Cálculos de Depreciación</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-outline-success">Crear un nuevo cálculo de depreciación</a>
+</p>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Identificador del Registro
+            </th>
+            <th>
+                Año Proceso
+            </th>
+            <th>
+                Mes Proceso
+            </th>
+            <th>
+                Activo Fijo
+            </th>
+            <th>
+                Fecha de Proceso
+            </th>
+            <th>
+                Monto depreciado
+            </th>
+            <th>
+                Depreciación acumulada
+            </th>
+            <th>
+                Cuenta Compra
+            </th>
+            <th>
+                Cuenta Depreciación
+            </th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AnioProceso)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MesProceso)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ActivoFijo.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaProceso)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MontoDepreciado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DepreciacionAcumulada)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CuentaCompra)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CuentaDepreciacion)
+                </td>
+                <td class="d-flex justify-content-end">
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Detalles</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

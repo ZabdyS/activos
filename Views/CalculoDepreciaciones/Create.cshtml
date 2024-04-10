@@ -1,0 +1,71 @@
+﻿@model activos.Models.CalculoDepreciacion
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Crear Cálculo de Depreciación</h1>
+
+<h4 class="text-center">Cálculo de Depreciación</h4>
+<hr />
+<div class="row justify-content-center my-5">
+    <div class="col-lg-6">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="AnioProceso" class="control-label"></label>
+                <input asp-for="AnioProceso" class="form-control" placeholder="Año de Proceso" />
+                <span asp-validation-for="AnioProceso" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MesProceso" class="control-label"></label>
+                <input asp-for="MesProceso" class="form-control" placeholder="Mes de Proceso" />
+                <span asp-validation-for="MesProceso" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ActivoFijoId" class="control-label"></label>
+                <select asp-for="ActivoFijoId" class="form-control" asp-items="ViewBag.ActivoFijoId"></select>
+                <span asp-validation-for="ActivoFijoId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaProceso" class="control-label"></label>
+                <input asp-for="FechaProceso" class="form-control" />
+                <span asp-validation-for="FechaProceso" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MontoDepreciado" class="control-label"></label>
+                <input asp-for="MontoDepreciado" class="form-control" placeholder="Monto Depreciado" />
+                <span asp-validation-for="MontoDepreciado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DepreciacionAcumulada" class="control-label"></label>
+                <input asp-for="DepreciacionAcumulada" class="form-control" placeholder="Depreciación Acumulada" />
+                <span asp-validation-for="DepreciacionAcumulada" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CuentaCompra" class="control-label"></label>
+                <input asp-for="CuentaCompra" class="form-control" placeholder="Cuenta de Compra" />
+                <span asp-validation-for="CuentaCompra" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CuentaDepreciacion" class="control-label"></label>
+                <input asp-for="CuentaDepreciacion" class="form-control" placeholder="Cuenta de Depreciación" />
+                <span asp-validation-for="CuentaDepreciacion" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-secondary">Volver</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

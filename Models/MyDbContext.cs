@@ -15,6 +15,7 @@ namespace activos.Models
         public DbSet<TipoActivo> TipoActivos { get; set; }
 
         public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<CalculoDepreciacion> CalculoDepreciaciones { get; set; }
         public MyDbContext(DbContextOptions<MyDbContext> options) : base(options) 
         {
            
