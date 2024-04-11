@@ -19,7 +19,7 @@ builder.Services.AddHttpClient<AsientosContablesController>(client =>
 });
 //conexion
 builder.Services.AddDbContext<MyDbContext>(options =>
-options.UseMySql("name=ConnectionStrings:DefaultConnection", new MySqlServerVersion(new Version(8, 0, 26))));
+options.UseMySql("name=ConnectionStrings:MysqlConnection", new MySqlServerVersion(new Version(8, 0, 26))));
 
 var app = builder.Build();
 
