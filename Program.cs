@@ -31,6 +31,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     options.LoginPath = "/Inicio/IniciarSesion";
     options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
 });
+builder.Services.AddApplicationInsightsTelemetry();
 
 var app = builder.Build();
 

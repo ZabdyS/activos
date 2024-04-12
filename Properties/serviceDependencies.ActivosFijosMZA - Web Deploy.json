@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "ignored": "true",
+      "type": "mssql",
+      "connectionId": "ConnectionStrings:DefaultConnection"
+    },
+    "appInsights1": {
+      "ignored": "true",
+      "type": "appInsights",
+      "dynamicId": null
+    }
+  }
+}
