@@ -28,7 +28,7 @@ namespace activos.Models
         public DateTime FechaRegistro { get; set; }
 
         [Required(ErrorMessage = "El campo Valor de compra es obligatorio.")]
-        [RegularExpression(@"^\d+(\.\d{1,2})?$", ErrorMessage = "El campo Depreciación acumulada solo puede contener números y un punto decimal opcional, con hasta 2 decimales.")]
+        [RegularExpression(@"^\d+(\.\d{1,2})?$", ErrorMessage = "El campo Valor de Compra solo puede contener números y un punto decimal opcional, con hasta 2 decimales.")]
         [Range(0.01, double.MaxValue, ErrorMessage = "El campo Valor de compra debe ser mayor que cero.")]
         [Column(TypeName = "decimal(18, 2)")]
         [DisplayFormat(DataFormatString = "{0:#,##0.00}")]

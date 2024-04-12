@@ -13,27 +13,27 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="AnioProceso" class="control-label"></label>
+                <label asp-for="AnioProceso" class="control-label">Año de Proceso</label>
                 <input asp-for="AnioProceso" class="form-control" placeholder="Año de Proceso" />
                 <span asp-validation-for="AnioProceso" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="MesProceso" class="control-label"></label>
+                <label asp-for="MesProceso" class="control-label">Mes de Proceso</label>
                 <input asp-for="MesProceso" class="form-control" placeholder="Mes de Proceso" />
                 <span asp-validation-for="MesProceso" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ActivoFijoId" class="control-label"></label>
+                <label asp-for="ActivoFijoId" class="control-label">Activo Fijo</label>
                 <select asp-for="ActivoFijoId" class="form-control" asp-items="ViewBag.ActivoFijoId"></select>
                 <span asp-validation-for="ActivoFijoId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="FechaProceso" class="control-label"></label>
+                <label asp-for="FechaProceso" class="control-label">Fecha de Proceso</label>
                 <input asp-for="FechaProceso" class="form-control" />
                 <span asp-validation-for="FechaProceso" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="MontoDepreciado" class="control-label"></label>
+                <label asp-for="MontoDepreciado" class="control-label">Monto de Depreciación</label>
                 <input asp-for="MontoDepreciado" class="form-control" placeholder="Monto Depreciado" />
                 <span asp-validation-for="MontoDepreciado" class="text-danger"></span>
             </div>
